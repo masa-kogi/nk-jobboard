@@ -1,0 +1,48 @@
+<div class="card col-sm-10 mx-auto mt-5 px-0">
+  <div class="card-header bg-white">
+    <h2>アカウント情報</h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-8">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>姓:</td>
+              <td><%= current_recruiter.recruiter_profile.last_name %></td>
+              <td>編集</td>
+            </tr>
+            <tr>
+              <td>名:</td>
+              <td><%= current_recruiter.recruiter_profile.first_name %></td>
+              <td>編集</td>
+            </tr>
+            <tr>
+              <td>所属:</td>
+              <td><%= current_recruiter.recruiter_profile.department.path.map(&:name).join %></td>
+              <td>編集</td>
+            </tr>
+            <tr>
+              <td>ユーザID:</td>
+              <td><%= current_recruiter.username %></td>
+              <td>編集</td>
+            </tr>
+            <tr>
+              <td>メールアドレス:</td>
+              <td><%= current_recruiter.email %></td>
+              <td>編集</td>
+            </tr>
+            <tr>
+              <td>パスワード:</td>
+              <td>(非表示)</td>
+              <td>編集</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-flex flex-column">編集</div>
+      </div>
+    </div>
+  </div>
+</div>

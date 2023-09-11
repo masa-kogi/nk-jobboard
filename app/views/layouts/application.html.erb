@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NkJobboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if notice %>
+      <div
+          x-data="{ show: true }"
+          x-init="setTimeout(() => show = false, 3000)"
+          x-show="show"
+          x-transition:leave="transition ease-out duration-1000"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="flash-message bg-green-500 text-white py-2 px-4 rounded shadow-lg"
+          role="alert">
+          <span><%= notice %></span>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div
+          x-data="{ show: true }"
+          x-init="setTimeout(() => show = false, 3000)"
+          x-show="show"
+          x-transition:leave="transition ease-out duration-1000"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="flash-message bg-red-500 text-white py-2 px-4 rounded shadow-lg"
+          role="alert">
+          <span><%= alert %></span>
+      </div>
+    <% end %>
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <%= yield %>
+    <script type="module">
+      import Alpine from "alpinejs";
+      Alpine.start();
+    </script>
+  </body>
+</html>

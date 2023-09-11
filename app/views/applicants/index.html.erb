@@ -1,0 +1,43 @@
+<body data-job-id="<%= @job.id %>" class="bg-gray-100 font-family-karla flex">
+  <% if admin_signed_in? %>
+    <%= render partial: "admins/shared/aside" %>
+  <% elsif recruiter_signed_in? %>
+    <%= render partial: "recruiters/shared/aside" %>
+  <% end %>
+  <div class="relative w-full flex flex-col content-offset h-screen overflow-y-auto">
+    <% if admin_signed_in? %>
+      <%= render partial: "admins/shared/header" %>
+    <% elsif recruiter_signed_in? %>
+      <%= render partial: "recruiters/shared/header" %>
+    <% end %>
+    <div class="w-full border-t flex flex-col bg-gray-100">
+      <main class="w-full flex-grow p-6">
+        <div class="fixed-content bg-gray-100 pb-8">
+          <h1 class="text-3xl text-black pb-2">応募者一覧</h1>
+          <div>
+            <%= render partial: 'job_card', locals: { job: @job } %>
+          </div>
+          <div class="flex">
+            <%= form_with(url: job_applicants_path, method: :get, local: true, remote: true, id: 'application-status-filter-form', class: 'w-1/6 mr-2') do |f| %>
+                <label class="block text-sm text-gray-600">ステータス</label>
+                <%= f.select :status, options_for_select(@application_statuses.map { |status| [status.name, status.id] }.unshift(['すべて', '']), selected: params[:status] || 1), {}, { class: "px-2 py-2 w-full text-gray-700 rounded" } %>
+            <% end %>
+            <%= search_form_for @q, url: job_applicants_path, remote: true, html: { id: 'search-form', class: 'ml-2 w-1/3' } do |f| %>
+                <%= f.label :global_search_cont, "キーワード", class: "block text-sm text-gray-600" %>
+                <%= f.search_field :global_search_cont, class: "px-2 py-2 w-full text-gray-700 rounded" %>
+                <%= f.submit "Search", style: "display: none;" %>
+            <% end %>
+          </div>
+        </div>
+        <div id="applicants" class="w-full bg-gray-100 flex-grow">
+          <% if @applicants.any? %>
+            <%= render partial: 'applicants_paginate', locals: { applicants: @applicants, job: @job } %>
+          <% else %>
+            <p class="mt-4 text-center text-red-600">現在この条件に該当する応募者はいません</p>
+        <% end %>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%= javascript_importmap_tags "applicants/index" %>
+</body>

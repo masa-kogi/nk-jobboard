@@ -1,0 +1,20 @@
+<body class="bg-gray-100 font-family-karla flex h-screen overflow-y-auto">
+  <%= render partial: "employees/shared/aside" %>
+  <div class="relative w-full flex flex-col content-offset">
+    <%= render partial: "employees/shared/header" %>
+    <div class="w-full border-t flex flex-col">
+      <main class="w-full p-6 pb-0">
+        <h1 class="w-full text-3xl text-black sticky top-12 z-10 bg-gray-100 mb-6 pb-8">応募画面</h1>
+        <%= render partial: "application_job" %>
+        <div class="flex justify-center items-center w-full pl-0 lg:pl-2">
+          <div class="leading-loose w-2/3">
+            <%= form_with model: @job_application, url: confirm_job_job_applications_path, local: true do |f| %>
+              <%= render partial: 'form', locals: { f: f, job_application: @job_application }, class: "mx-auto m-4 p-10 bg-white rounded shadow-xl" %>
+            <% end %>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%= javascript_include_tag "recruiters/new", defer: true %>
+</body>

@@ -1,0 +1,3 @@
+module Employees::JobApplicationsHelper
+   
+end

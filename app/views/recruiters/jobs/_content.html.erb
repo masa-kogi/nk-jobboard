@@ -1,0 +1,65 @@
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">職種</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job.category.name %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">タイトル</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job.title %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">部門</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job.department.path.map(&:name).join %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">勤務地</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job.work_location.name %></p>
+    </div>
+  </div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">仕事内容</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job.job_description %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">応募条件</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job.application_requirement %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">担当者</h2>
+    <% @contact_persons.each do |contact_person| %>
+        <li><%= contact_person.full_name %></li>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">ステータス</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @current_job_status %></p>
+    </div>
+  </div>
+</div>

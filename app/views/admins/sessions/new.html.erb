@@ -1,0 +1,29 @@
+<div class="flex items-center justify-center h-screen bg-gray-200 bg-white py-6">
+  <div class="px-2">
+    <h2 class="mb-4 text-center text-3xl font-bold text-gray-800 md:mb-8 lg:text-3xl">
+      NK Jobboard
+    </h2>
+    <p class="mb-4 text-center text-xl text-gray-400 md:mb-8">
+      管理者用ログイン画面
+    </p>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="flex flex-col rounded-lg border p-4 md:p-8">
+        <div class="py-3 px-5">
+          <%= f.label :username, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %><br />
+          <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "w-full rounded border bg-gray-50 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" %>
+        </div>
+
+        <div class="py-3 px-5">
+          <%= f.label :password, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class: "w-full rounded border bg-gray-50 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" %>
+        </div>
+
+        <div class="px-8 py-5 flex justify-center">
+          <%= f.submit "Log in", class: "btn flex items-center justify-center gap-2 rounded-lg bg-blue-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-600 focus-visible:ring active:bg-blue-700 md:text-base" %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>

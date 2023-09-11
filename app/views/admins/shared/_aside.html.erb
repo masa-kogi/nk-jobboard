@@ -1,0 +1,15 @@
+<aside class="relative bg-sidebar w-1/6 hidden sm:block shadow-xl overflow-y-auto h-screen position-fixed">
+  <div class="p-10">
+    <%= link_to admin_jobs_path(admin_username: current_admin.username), class: "flex title-font font-medium items-center text-gray-900 mb-2 md:mb-0" do %>
+      <%= image_tag 'logo.png', class: 'w-12 h-12 rounded-full', alt: 'NK Job Board Icon' %>
+    <% end %>
+  </div>
+  <nav class="text-white text-base font-semibold pt-3">
+    <div class="">
+      <%= link_to "#すべての求人", admin_jobs_path(admin_username: current_admin.username), data: { department_id: '' }, class: 'block px-4 py-2 mt-2 department-link' %>
+      <% @root_departments.each do |department| %>
+        <%= link_to department.name, admin_jobs_path(admin_username: current_admin.username, department: department.id), data: { department_id: department.id }, class: 'block px-4 py-2 mt-2 department-link' %>
+      <% end %>
+    </div>
+  </nav>
+</aside>

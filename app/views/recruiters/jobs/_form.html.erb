@@ -1,0 +1,86 @@
+
+<form class="mx-auto m-4 p-10 bg-white rounded shadow-xl">
+  <div class="mt-8">
+    <%= f.label :category, "職種", class: "block text-sm text-gray-600" %>
+    <%= f.collection_select :category_id, @categories || [], :id, :name, { prompt: '選択してください' }, autocomplete: "category_id", class: "w-1/4 px-5 py-1 text-gray-700 bg-gray-200 rounded" %>
+    <% if @job.errors.include?(:category) %>
+      <% @job.errors.full_messages_for(:category).each do |message| %>
+        <p class="text-red-500"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <%= f.label :title, "タイトル", class: "block text-sm text-gray-600" %>
+    <%= f.text_field :title, class: "w-full px-5 py-4 text-gray-700 bg-gray-200 rounded" %>
+    <% if @job.errors.include?(:title) %>
+      <% @job.errors.full_messages_for(:title).each do |message| %>
+        <p class="text-red-500"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <%= f.label :department, "部門", class: "block text-sm text-gray-600" %>
+    <%= f.collection_select :department_id, @recruiter_sub_departments || [], :id, :path_name, { prompt: '選択してください' }, data: { remote: true, url: fetch_recruiters_recruiter_jobs_path, method: "GET" }, class: "w-2/3 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+    <% if @job.errors.include?(:department) %>
+      <% @job.errors.full_messages_for(:department).each do |message| %>
+        <p class="text-red-500"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <%= f.label :work_location, "勤務地", class: "block text-sm text-gray-600" %>
+    <%= f.collection_select :work_location_id, @work_locations || [], :id, :name, { prompt: '選択してください' }, autocomplete: "work_location_id", class: "w-1/4 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+    <% if @job.errors.include?(:work_location) %>
+      <% @job.errors.full_messages_for(:work_location).each do |message| %>
+        <p class="text-red-500"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <%= f.label :job_description, "仕事内容", class: "block text-sm text-gray-600" %>
+    <%= f.text_area :job_description, class: "w-full h-32 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+    <% if @job.errors.include?(:job_description) %>
+      <% @job.errors.full_messages_for(:job_description).each do |message| %>
+        <p class="text-red-500"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <%= f.label :application_requirement, "応募条件", class: "block text-sm text-gray-600" %>
+    <%= f.text_area :application_requirement, class: "w-full h-32 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+    <% if @job.errors.include?(:application_requirement) %>
+      <% @job.errors.full_messages_for(:application_requirement).each do |message| %>
+        <p class="text-red-500"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <%= f.label :contact_person, "担当者（部門を選択すると表示されます）※複数選択可", class: "block text-sm text-gray-600" %>
+    <%= f.collection_select :contact_person_ids, @recruiters || [], :id, :full_name, { selected: @contact_person_ids }, multiple: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" %>
+    <% if @job.errors.include?(:contact_person) %>
+      <% @job.errors.full_messages_for(:contact_person).each do |message| %>
+        <p class="text-red-500"><%= message %></p>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <label class="block text-sm text-gray-600">ステータス</label>
+    <div class="relative">
+      <div class="flex justify-between items-center mr-4">
+        <%= f.collection_radio_buttons :job_status_id, job_statuses || [], :id, :name do |b| %>
+          <div>
+            <%= b.radio_button(class: "w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500") %>
+            <%= b.label(class: "ml-2 font-medium text-gray-900") %>
+          </div>
+        <% end %>
+      </div>
+      <% if @job.errors.include?(:job_status_id) %>
+        <% @job.errors.full_messages_for(:job_status_id).each do |message| %>
+          <p class="text-red-500"><%= message %></p>
+        <% end %>
+      <% end %>
+  <div class="mt-8 mb-12 w-full">
+
+    <%= f.submit "入力内容を確認する", class: "btn flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"%>
+  </div>
+</form>

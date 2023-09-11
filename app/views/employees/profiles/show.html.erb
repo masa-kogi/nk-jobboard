@@ -1,0 +1,21 @@
+<body class="bg-gray-100 font-family-karla flex overflow-y-auto">
+  <%= render partial: "employees/shared/aside" %>
+    <div class="relative w-full flex flex-col content-offset">
+      <%= render partial: "employees/shared/header" %>
+      <div class="w-full border-t flex flex-col">
+        <main class="w-full p-6">
+          <h1 class="w-full text-3xl text-black sticky top-12 z-10 bg-gray-100 mb-6 pb-8">プロファイル情報画面</h1>
+          <div class="flex justify-center items-center w-full mt-6 pl-0 lg:pl-2">
+            <div class="leading-loose w-2/3">
+              <%= render partial: "content", locals: { employee_profile: @employee_profile } %>
+              <div class="flex justify-center mt-8 p-2 w-full">
+                <%= button_to "プロファイルを編集する", edit_employee_profile_path(current_employee.username), method: :get, class: "btn flex bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded" %>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <%= javascript_include_tag "recruiters/new", defer: true %>
+
+</body>

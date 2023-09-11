@@ -1,0 +1,36 @@
+<body class="bg-gray-100 font-family-karla flex overflow-y-auto">
+  <%= render partial: "employees/shared/aside" %>
+    <div class="relative w-full flex flex-col content-offset">
+      <%= render partial: "employees/shared/header" %>
+      <div class="w-full border-t flex flex-col">
+        <main class="w-full p-6">
+          <h1 class="w-full text-3xl text-black sticky top-12 z-10 bg-gray-100 mb-6 pb-8">求人詳細画面</h1>
+          <div class="flex justify-center items-center w-full mt-6 pl-0 lg:pl-2">
+            <div class="leading-loose w-2/3">
+              <%= render partial: "content" %>
+              <% if current_employee && @already_applied %>
+                <div class="flex justify-center items-center">
+                  <p class="text-red-500">既に応募済みです。</p>
+                </div>
+                <div class="flex justify-center mt-8 p-2 w-full">
+                  <%= link_to "求人一覧に戻る", :back, class: "btn flex bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded" %>
+                </div>
+              <% elsif current_employee && @same_department %>
+                <div class="flex justify-center items-center">
+                  <p class="text-red-500">自分の所属する部門の求人には応募できません。</p>
+                </div>
+              <% else %>
+                <div class="flex justify-between mt-8 p-2 w-full">
+                  <%= link_to "求人一覧に戻る", :back, class: "btn flex bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded" %>
+                  <%= link_to "応募画面に進む", new_job_job_application_path(@job), class: "btn flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded" %>
+                </div>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <%= javascript_include_tag "recruiters/new", defer: true %>
+
+</body>

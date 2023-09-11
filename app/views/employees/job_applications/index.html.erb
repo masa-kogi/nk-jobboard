@@ -1,0 +1,31 @@
+<body <%= current_employee.present? ? "data-employee-username=\"#{current_employee.username}\"" : "" %> class="bg-gray-100 font-family-karla flex">
+  <%= render partial: "employees/shared/aside" %>
+  <div class="relative w-full flex flex-col content-offset h-screen overflow-y-auto">
+    <%= render partial: "employees/shared/header" %>
+    <div class="w-full border-t flex flex-col bg-gray-100">
+      <main class="w-full flex-grow p-6">
+        <div class="fixed-content bg-gray-100 pb-8">
+          <h1 class="text-3xl text-black pb-6">応募求人一覧</h1>
+          <div class="flex justify-between items-center mb-4">
+            <p class="pb-3"><%= @department_name %></p>
+          </div>
+          <div class="flex">
+            <%= search_form_for @q, url: employee_job_applications_path(current_employee), remote: true, html: { id: 'search-form', class: 'ml-2 w-1/3' } do |f| %>
+              <%= f.label :global_search_cont, "キーワード", class: "block text-sm text-gray-600" %>
+              <%= f.search_field :global_search_cont, class: "px-2 py-2 w-full text-gray-700 rounded" %>
+              <%= f.submit "Search", style: "display: none;" %>
+            <% end %>
+          </div>
+        </div>
+        <% if @jobs.any? %>
+          <div id="jobs" class="w-full bg-gray-100 flex-grow">
+            <%= render partial: 'jobs_paginate', locals: { jobs: @jobs } %>
+          </div>
+        <% else %>
+          <p class="mt-4 text-center text-red-600">現在この条件に該当する求人はありません</p>
+        <% end %>
+      </main>
+    </div>
+  </div>
+  <%= javascript_importmap_tags "job_applications/index" %>
+</body>

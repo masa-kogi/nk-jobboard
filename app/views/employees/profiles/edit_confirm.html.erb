@@ -1,0 +1,25 @@
+<body class="bg-gray-100 font-family-karla flex overflow-y-auto">
+  <%= render partial: "employees/shared/aside" %>
+  <div class="relative w-full flex flex-col content-offset">
+    <%= render partial: "employees/shared/header" %>
+    <div class="w-full border-t flex flex-col">
+      <main class="w-full p-6">
+        <h1 class="w-full text-3xl text-black sticky top-12 z-10 bg-gray-100 mb-6 pb-8">プロファイル情報確認画面</h1>
+        <div class="flex justify-center items-center w-full mt-6 pl-0 lg:pl-2">
+          <div class="leading-loose w-2/3">
+            <%= render partial: "content", locals: { employee_profile: @employee_profile } %>
+            <div class="flex justify-between mt-8 p-2 w-full">
+              <%= link_to "編集画面に戻る", edit_employee_profile_path, class: "btn flex bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded" %>
+              <%= form_with url: employee_profile_path, local: true, method: :put do |f| %>
+  <%= hidden_field_tag 'employee_profile[qualifications]', @employee_profile.qualifications %>
+  <%= hidden_field_tag 'employee_profile[skills]', @employee_profile.skills %>
+  <%= f.submit "更新する", class: "btn flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"%>
+<% end %>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%= javascript_include_tag "recruiters/new", defer: true %>
+</body>

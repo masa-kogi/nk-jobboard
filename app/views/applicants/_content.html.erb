@@ -1,0 +1,48 @@
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">応募者名</h2>
+      <p class="leading-relaxed text-base mb-2"><%= applicant.full_name %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">現所属部署</h2>
+      <p class="leading-relaxed text-base mb-2"><%= applicant.department.path_name %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">保有資格</h2>
+      <p class="leading-relaxed text-base mb-2"><%= applicant.qualifications %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">保有スキル</h2>
+      <p class="leading-relaxed text-base mb-2"><%= applicant.skills %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">志望理由</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job_application.reason_for_application %></p>
+    </div>
+  </div>
+</div>
+<div class="w-full bg-white">
+  <div class="relative">
+    <div class="px-8 py-4 border-l-2 border-gray-200 border-opacity-60">
+      <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">自己PR</h2>
+      <p class="leading-relaxed text-base mb-2"><%= @job_application.self_promotion %></p>
+    </div>
+  </div>
+</div>

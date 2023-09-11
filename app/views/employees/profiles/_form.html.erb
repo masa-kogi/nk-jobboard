@@ -1,0 +1,21 @@
+<div class="mt-8">
+  <%= f.label :qualificationss, "保有資格", class: "block text-sm text-gray-600" %>
+  <%= f.text_area :qualifications, class: "w-full h-32 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+  <% if employee_profile.errors.include?(:qualifications) %>
+    <% employee_profile.errors.full_messages_for(:qualifications).each do |message| %>
+      <p class="text-red-500"><%= message %></p>
+    <% end %>
+  <% end %>
+</div>
+<div class="mt-8">
+  <%= f.label :skills, "保有スキル", class: "block text-sm text-gray-600" %>
+  <%= f.text_area :skills, class: "w-full h-32 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+  <% if employee_profile.errors.include?(:skills) %>
+    <% employee_profile.errors.full_messages_for(:skills).each do |message| %>
+      <p class="text-red-500"><%= message %></p>
+    <% end %>
+  <% end %>
+</div>
+<div class="mt-8 mb-12 w-full">
+  <%= f.submit "確認画面に進む", class: "btn flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"%>
+</div>

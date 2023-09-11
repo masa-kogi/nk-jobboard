@@ -1,0 +1,22 @@
+<body data-fetch-recruiters-url="<%= fetch_recruiters_recruiter_jobs_path %>" data-contact-person-ids="<%= @job.contact_persons.pluck(:id).join(",") || 'null' %>" class="bg-gray-100 font-family-karla flex overflow-y-auto">
+  <%= render partial: "recruiters/shared/aside" %>
+  <div class="relative w-full flex flex-col content-offset">
+    <%= render partial: "recruiters/shared/header" %>
+    <div class="w-full border-t flex flex-col">
+      <main class="w-full p-6">
+        <h1 class="w-full text-3xl text-black sticky top-12 z-10 bg-gray-100 mb-6 pb-8">求人編集画面</h1>
+        <div class="flex justify-center items-center w-full mt-6 pl-0 lg:pl-2">
+          <div class="leading-loose w-2/3">
+          <div class="mt-4 p-2 w-full text-right">
+            <%= button_to "この求人を削除する", recruiter_job_path(current_recruiter, @job), method: :delete, class: "btn inline-block px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-lg", onclick: "return confirm('求人を削除します。よろしいですか？');" %>
+          </div>
+          <%= form_with model: @job, url: edit_confirm_recruiter_job_path(current_recruiter, @job), local: true do |f| %>
+            <%= render partial: 'form', locals: { f: f, job_statuses: JobStatus.all } %>
+          <% end %>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%= javascript_include_tag "recruiters/new", defer: true %>
+</body>

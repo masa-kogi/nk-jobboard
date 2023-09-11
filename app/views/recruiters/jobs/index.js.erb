@@ -1,0 +1,9 @@
+let jobsPaginate = document.querySelector('#jobs');
+<% if @jobs.present? %>
+  jobsPaginate.innerHTML = '<%= j render(partial: 'jobs_paginate', locals: { jobs: @jobs }) %>';
+  history.replaceState( "", "" ,"?page=<%= @page %>");
+<% else %>
+  jobsPaginate.innerHTML = '<p class="mt-4 text-center text-red-600">現在この条件に該当する求人はありません</p>';
+<% end %>
+
+document.querySelector('p.pb-3').textContent = '<%= @department_name %>';

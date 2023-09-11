@@ -1,0 +1,23 @@
+
+<div class="mt-8">
+  <%= f.label :reason_for_application, "志望動機", class: "block text-sm text-gray-600" %>
+  <%= f.text_area :reason_for_application, class: "w-full h-32 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+  <% if @job_application.errors.include?(:reason_for_application) %>
+    <% @job_application.errors.full_messages_for(:reason_for_application).each do |message| %>
+      <p class="text-red-500"><%= message %></p>
+    <% end %>
+  <% end %>
+</div>
+<div class="mt-8">
+  <%= f.label :self_promotion, "自己PR", class: "block text-sm text-gray-600" %>
+  <%= f.text_area :self_promotion, class: "w-full h-32 px-2 py-2 text-gray-700 bg-gray-200 rounded" %>
+  <% if @job_application.errors.include?(:self_promotion) %>
+    <% @job_application.errors.full_messages_for(:self_promotion).each do |message| %>
+      <p class="text-red-500"><%= message %></p>
+    <% end %>
+  <% end %>
+</div>
+<div class="mt-8 mb-12 flex justify-between">
+  <%= link_to "求人詳細画面に戻る", job_path(@job), class: "btn bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 px-4 rounded" %>
+  <%= f.submit "入力内容を確認する", class: "btn text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"%>
+</div>

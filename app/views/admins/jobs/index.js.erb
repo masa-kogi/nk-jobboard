@@ -1,0 +1,5 @@
+let jobsPaginate = document.querySelector('#jobs');
+jobsPaginate.innerHTML = '<%= j render(partial: 'jobs_paginate', locals: { jobs: @jobs }) %>';
+history.replaceState( "", "" ,"?page=<%= @page %>");
+
+document.querySelector('p.pb-3').textContent = '<%= @department_name %>';

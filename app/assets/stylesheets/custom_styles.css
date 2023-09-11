@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'Karla';
+  src: url(asset-path('Karla-Regular.ttf')) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Karla';
+  src: url(asset-path('Karla-Bold.ttf')) format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+.font-family-karla {
+  font-family: karla;
+}
+
+.bg-sidebar {
+  background: #3d68ff;
+}
+
+.cta-btn {
+  color: #3d68ff;
+}
+
+.active-nav-link {
+  background: #1947ee;
+}
+
+.nav-item:hover {
+  background: #1947ee;
+}
+
+.account-link:hover {
+  background: #3d68ff;
+}
+
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.position-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 100;
+  /* 必要に応じてz-indexを調整してください。 */
+}
+
+.content-offset {
+  margin-left: calc(100% / 6);
+}
+
+/* ヘッダーを固定 */
+.header-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+}
+
+[x-cloak] {
+  display: none;
+}
+
+.fixed-content {
+  position: sticky;
+  top: 48px;
+  z-index: 11;
+}
+
+.sticky-thead {
+  position: sticky;
+  top: 256px;
+  /* or any value you want, depending on where you want to stick it relative to the viewport */
+  z-index: 10;
+  /* ensure it stays on top of other content */
+}
+
+.sticky-admin-thead {
+  position: sticky;
+  top: 254px;
+  /* or any value you want, depending on where you want to stick it relative to the viewport */
+  z-index: 10;
+  /* ensure it stays on top of other content */
+}
+
+.sticky-employee-thead {
+  position: sticky;
+  top: 200px;
+  /* or any value you want, depending on where you want to stick it relative to the viewport */
+  z-index: 10;
+  /* ensure it stays on top of other content */
+}
+
+.custom-link {
+  color: blue;
+  text-decoration: none;
+  /* リンクの下線を削除 */
+}
+
+.custom-link:hover {
+  text-decoration: underline;
+  /* color: darkblue; */
+}

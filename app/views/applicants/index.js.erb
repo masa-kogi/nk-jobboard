@@ -1,0 +1,7 @@
+let applicantsPaginate = document.querySelector('#applicants');
+<% if @applicants.present? %>
+  applicantsPaginate.innerHTML = '<%= j render(partial: 'applicants_paginate', locals: { applicants: @applicants }) %>';
+<% else %>
+  applicantsPaginate.innerHTML = '<p class="mt-4 text-center text-red-600">現在この条件に該当する応募者はいません</p>';
+  history.replaceState( "", "" ,"?page=<%= @page %>");
+<% end %>

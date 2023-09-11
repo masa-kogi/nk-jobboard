@@ -1,0 +1,2 @@
+<%= render partial: 'applicant_list', locals: { applicants: @applicants, job: @job } %>
+<%= paginate @applicants, remote: true %>

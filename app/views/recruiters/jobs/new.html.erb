@@ -1,0 +1,19 @@
+<body data-contact-person-id="<%= @job.contact_person_ids ? @job.contact_person_ids.join(",") : 'null' %>" class="bg-gray-100 font-family-karla flex overflow-y-auto">
+  <%= render partial: "recruiters/shared/aside" %>
+  <div class="relative w-full flex flex-col content-offset">
+    <%= render partial: "recruiters/shared/header" %>
+    <div class="w-full border-t flex flex-col">
+      <main class="w-full p-6">
+        <h1 class="w-full text-3xl text-black sticky top-12 z-10 bg-gray-100 mb-6 pb-8">新規求人作成画面</h1>
+        <div class="flex justify-center items-center w-full mt-6 pl-0 lg:pl-2">
+          <div class="leading-loose w-2/3">
+            <%= form_with model: @job, url: confirm_recruiter_jobs_path, html: { data: { url: fetch_recruiters_recruiter_jobs_path(username: current_recruiter.username) } } do |f| %>
+              <%= render partial: 'form', locals: { f: f, job_statuses: JobStatus.where(id: [1, 2]) } %>
+            <% end %>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <%= javascript_include_tag "recruiters/new", defer: true %>
+</body>
