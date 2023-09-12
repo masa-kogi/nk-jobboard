@@ -8,14 +8,19 @@ class Employees::JobApplicationsController < ApplicationController
     job_ids = current_employee.employee_profile.job_applications.order(created_at: :desc).pluck(:job_id)
 
     @q = Job.where(id: job_ids).ransack(params[:q])
-    @jobs = @q.result.order(Arel.sql("FIELD(id, #{job_ids.join(',')})")).includes(:job_applications).page(params[:page]).per(10)
+    # @jobs = @q.result.order(Arel.sql("FIELD(id, #{job_ids.join(',')})")).includes(:job_applications).page(params[:page]).per(10)
+    order_clause = job_ids.map.with_index{ |id, index| "WHEN #{id} THEN #{index}" }.join(" ")
+    @jobs = @q.result
+          .order(Arel.sql("CASE jobs.id #{order_clause} END"))
+          .includes(:job_applications)
+          .page(params[:page])
+          .per(10)
 
     @application_statuses = {}
     @application_dates = {}
 
     @jobs.each do |job|
       job_application = JobApplication.find_by(job: job, applicant: current_employee.employee_profile)
-      # @application_statuses[job.id] = job_application&.current_status
       @application_statuses[job.id] = job_application.current_status.name if job_application
 
       application_date = job_application&.created_at
