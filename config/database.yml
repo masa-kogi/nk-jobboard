@@ -53,3 +53,8 @@ development:
 #   database: nk_jobboard_production
 #   username: nk_jobboard
 #   password: <%= ENV["NK_JOBBOARD_DATABASE_PASSWORD"] %>
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5

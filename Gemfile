@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.6"
 gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
-gem "mysql2", "~> 0.5"
+# gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -67,6 +67,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "faker"
+  gem "mysql2", "~> 0.5"
 end
 
 group :development do
@@ -88,3 +89,7 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 2.0"
+
+group :production do
+  gem 'pg'
+end
