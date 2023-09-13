@@ -1,7 +1,7 @@
 <aside class="relative bg-sidebar w-1/6 hidden sm:block shadow-xl overflow-y-auto h-screen position-fixed flex flex-col items-center">
-  <div class="p-3 w-full flex justify-center">
-    <%= link_to recruiter_jobs_path(recruiter_username: current_recruiter.username),  class: "flex title-font font-medium items-center text-gray-900 mb-2 md:mb-0" do %>
-      <%= image_tag 'logo.png', class: 'w-2/3 h-auto rounded-full', alt: 'NK Job Board Icon' %>
+  <div class="p-10 w-full flex justify-center">
+    <%= link_to recruiter_jobs_path(recruiter_username: current_recruiter.username),  class: "flex title-font font-medium items-center text-gray-900" do %>
+      <%= image_tag 'logo.png', class: 'w-auto h-auto rounded-full', alt: 'NK Job Board Icon' %>
     <% end %>
   </div>
   <nav class="text-white text-base font-semibold pt-3 w-full flex flex-col items-center">
