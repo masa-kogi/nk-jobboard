@@ -11,7 +11,7 @@
 technology_development_operations = Department.create(name: "技術開発本部")
 # 2
 monitoring_technology_development_division = technology_development_operations.children.create(name: "生体モニタ技術開発部")
-# 3
+# å3
 medical_instruments_technology_development_division = technology_development_operations.children.create(name: "医療機器技術開発部")
 # 4
 vital_sensor_technology_development_division = technology_development_operations.children.create(name: "バイタルセンサ技術開発部")

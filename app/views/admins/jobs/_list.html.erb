@@ -41,7 +41,7 @@
       </td>
       <td class="px-3 py-2 border-b border-gray-200 bg-white text-sm">
         <p class="text-gray-900 whitespace-no-wrap">
-          <%= link_to job.title, job_path(job), class: "custom-link" %>
+          <%= link_to job.title, admin_job_path(current_admin, job), class: "custom-link" %>
         </p>
       </td>
       <td class="px-3 py-2 border-b border-gray-200 bg-white text-sm">
